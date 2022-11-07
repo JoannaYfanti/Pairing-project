@@ -4,6 +4,7 @@ package com.brightstraining.WebAppDemo.WebAppDemo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,6 +16,7 @@ public class WebAppController {
         return ResponseEntity.ok("Yeah you did it");
 
     }
+
 
     @GetMapping("/hello")
     public ResponseEntity<String> hello(){
@@ -28,4 +30,7 @@ public class WebAppController {
         return ResponseEntity.ok("Yeah you did it again\n" + name + "I like " + food);
 
     }
+
+
+
 }
