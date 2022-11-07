@@ -17,25 +17,29 @@ public class WebAppController {
 
     }
 
-
-    @GetMapping("/hello")
-    public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("Yeah you did it again");
-
-    }
-
-    @GetMapping("/pair")
+    @GetMapping("/hi")
     @ResponseBody
     public ResponseEntity<String> pair(@RequestParam String name, String food) {
-        return ResponseEntity.ok("Yeah you did it again\n" + name + "I like " + food);
+        return ResponseEntity.ok("hello\n" + name + "I like " + food);
 
     }
+    @GetMapping("/escaping")
+    public ResponseEntity<String> escaping() {
+        return ResponseEntity.ok("<h1>Hi!My name is Ioanna</h1>");
+    }
 
+    @PostMapping("/hello")
+    public ResponseEntity<String> greating(@RequestParam String name,@RequestParam String city, @RequestParam String food) {
+        return ResponseEntity.ok("This is " + name + ", I am from " +city +" and I like to eat " + food);
+    }
 
-//    @PostMapping("/helloo")
-//    @ResponseBody
-//    public String helloo(@RequestParam String name, String food) {
-//        return "Hello, " + name + "I like " + food;
-//    }
-
+    @GetMapping("/")
+    public ResponseEntity<String> form() {
+        return ResponseEntity.ok("<form action=\"/hello\" method=\"POST\">\n" +
+                "<input name=\"name\" placeholder=\"Your name\">\n" +
+                "<input name=\"city\" placeholder=\"city \">\n" +
+                "<input name=\"food\" placeholder=\"A meal\">\n"+
+                "<button>Go</button>\n" +
+                "</form>");
+    }
 }
