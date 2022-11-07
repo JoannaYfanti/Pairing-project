@@ -1,6 +1,7 @@
 package com.brightstraining.WebAppDemo.WebAppDemo;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,5 +42,20 @@ public class WebAppController {
                 "<input name=\"food\" placeholder=\"A meal\">\n"+
                 "<button>Go</button>\n" +
                 "</form>");
+    }
+    private GreetingService greetingService;
+    private Incrementer incrementer;
+    @Autowired
+    public WebAppController(GreetingService greetingService,Incrementer incrementer) {
+        this.greetingService = greetingService;
+        this.incrementer = incrementer;
+    }
+
+
+    @GetMapping("/greeting")
+    public ResponseEntity <String> greeting(String name, String lang){
+        String welcome = greetingService.getWelcome(lang, name);
+        int counter= incrementer.getTimes();
+        return ResponseEntity.ok(welcome + counter);
     }
 }
