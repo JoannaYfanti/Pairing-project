@@ -5,8 +5,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class Incrementer {
     int counter = 0 ;
-    public int getTimes(){
+//    String name ;
+    public int getTimes(String name){
+//        if(!(this.name.equals(name))){
+//            counter = 0 ;
+//        }
         counter++;
         return counter;
     }
+
 }
