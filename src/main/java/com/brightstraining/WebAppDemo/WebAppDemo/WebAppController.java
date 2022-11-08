@@ -55,7 +55,7 @@ public class WebAppController {
     @GetMapping("/greeting")
     public ResponseEntity <String> greeting(String name, String lang){
         String welcome = greetingService.getWelcome(lang, name);
-        int counter= incrementer.getTimes(name);
+        int counter = incrementer.getTimes(name);
         return ResponseEntity.ok(welcome + counter);
     }
 }
